@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  --font-roboto: "Roboto", sans-serif; 
+  --font-Panchang: "Panchang", sans-serif;
+  --font-Zodiak: "Zodiak", serif; 
+  --font-Boska: 'Boska', serif;
+  --font-Gambetta: 'Gambetta', serif;
+  --font-Sharpie: 'Sharpie', sans-serif;
+  --font-Gambarino: 'Gambarino', serif;
+  --font-Melodrama: 'Melodrama', serif;
+  --font-Nunito: 'Nunito', sans-serif;
+    /* technology font  */
+  --font-Iceland: "Iceland", sans-serif;
+  --font-Audiowide: "Audiowide", sans-serif;
+    --font-Montserrat: "Montserrat Alternates", sans-serif;
+
+
+
+  /* --color-primary: #FFD369;    */
+  --color-primary: #FFD700; 
+  --color-gold: #DAA520	;
+  --color-goldlight: #F0E68C;   
+    --color-goldlight1: #F2EF8A;   
+  --color-metaalicgold: #CFB53B;   
+    --color-sec: #F1DB8A;   
+    --color-tertiary: #93CCF5;
+
+    /* webuse colors */
+     --color-nav: #1A8087	; 
+} 
