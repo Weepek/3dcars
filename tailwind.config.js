@@ -6,8 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#EC8DA7',
-        secondary: '#984444',
+        primary: "#bff6fa",
+        secondary: "#984444",
+        third: "#B026FF",
+        background: "#393E46",
       },
       backgroundImage: {
         backimg: "url('../src/Asset/h6.png')",

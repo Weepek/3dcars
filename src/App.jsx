@@ -1,27 +1,36 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+ import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from './component/Navbar';
-import Service from './component/service';
-import Car from './component/Carscard';
-import LandingPage1 from './component/Landingpage1';
-import LandingPage2 from './component/Landingpage2';
-import LandingPage3 from "./component/Landingpage3";
-import Contact from './component/Contact';    
+import Navbar from "./component/Navbar";
+import Service from "./component/service";
+import Car from "./component/Carscard";
+import LandingPage2 from "./component/Landingpage2";
+import Features from "./component/Features";
+import Project from "./component/Project";
+import Contact from "./component/Contact";
 import Footer from "./component/Footer";
 
-// Optional: Move each of these to their own files like "pages/Home.js"
+// Home component with sections for hash-based navigation
 const Home = () => (
-  <>
-    {/* <LandingPage1 />
-    <LandingPage2 /> */}
-    <LandingPage3 />
-    <Service />
-  
-  </>
+  <main>
+    <section id="home" className="scroll-mt-20">
+      <LandingPage2 />
+    </section>
+    <section id="about" className="scroll-mt-20">
+      <Service />
+    </section>
+    <section id="features" className="scroll-mt-20">
+      <Features />
+    </section>
+    <section id="project" className="scroll-mt-20">
+      <Project />
+    </section>
+    <section id="Contact" className="scroll-mt-20">
+      <Contact />
+    </section>
+  </main>
 );
- 
- 
+
 function App() {
   return (
     <Router>
@@ -29,17 +38,14 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Carscard" element={<Car />} />
-          <Route path="/Contact" element={<Contact />} />
+          <Route path="/carscard" element={<Car />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Footer />
       </div>
-        <Footer />  
     </Router>
-    
-
   );
 }
 
 export default App;
-
 

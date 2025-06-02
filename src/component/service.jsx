@@ -1,115 +1,157 @@
-import React from 'react';
-import cus1 from '../assets/car1.jpg';
-import cus2 from '../assets/car5.jpg';
-import cus3 from '../assets/car8.jpg';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
-import { CardBody, CardContainer, CardItem } from '../component/ui/3d-card';
 
-function Service() {
-  const cardData = [
-    {
-      img: cus1,
-      title: 'Maserati',
-      description: 'Our customers leave satisfied, knowing they made the right choice with us.',
-      highlights: [
-        'Twin-turbocharged V6 engine',
-        'Italian luxury interior',
-        'Adaptive suspension for smooth rides',
-      ],
+import React from "react";
+import { motion } from "framer-motion";
+import { ReactTyped } from "react-typed";
+import ser1img from "../assets/ser1img.png";
+import ser2img from "../assets/DIGITAL.png";
+import ser3img from "../assets/ser3img.png";
+import ser4img from "../assets/ser5img.png";
+import bac from "../assets/ser2.png";
+import { MdRocket } from "react-icons/md";
+
+
+
+
+const serviceDetails = [
+ {
+  iconPath: ser1img,
+  title: "WEB & APP DEVELOPMENT",
+  description: "Unlock the magic of app development with tailored, responsive solutions.",
+  points: ["Responsive Design", "SEO Optimized", "Fast Loading"]
+},
+{
+  iconPath: ser2img,
+  title: "DIGITAL MARKETING",
+  description: "Boost your brand visibility with targeted strategies and engaging campaigns.",
+  points: ["Social Media Marketing", "Email Campaigns", "Google Ads"]
+},
+{
+  iconPath: ser3img,
+  title: "SEO & DOMAIN SETUP",
+  description: "Enhance your online reach with expert SEO techniques and reliable domain management.",
+  points: ["Keyword Optimization", "Domain Setup", "Performance Tracking"]
+},
+{
+  iconPath: ser4img,
+  title: "UI/UX DESIGN",
+  description: "Design seamless digital experiences that captivate and convert users effectively.",
+  points: ["Wireframing", "Prototyping", "User Research"]
+}
+];
+
+function Services() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
     },
-    {
-      img: cus2,
-      title: 'Ferrari',
-      description: 'Take a Test Drive today and feel the quality of our cars before you buy.',
-      highlights: [
-        'V8 power with 710 horsepower',
-        'Iconic red racing finish',
-        'Track-tested performance',
-      ],
+  };
+
+  const fadeInVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 10 },
     },
-    {
-      img: cus3,
-      title: 'Lamborghini',
-      description: 'Cars come with full previous service history checked with authorised dealerships.',
-      highlights: [
-        'V12 naturally aspirated engine',
-        'Scissor doors & aggressive styling',
-        'All-wheel drive for superior grip',
-      ],
+  };
+
+  const cardContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
     },
-  ];
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        duration: 0.6,
+      },
+    },
+  };
+
+  const handleImageError = (e) => {
+    e.target.onerror = null;
+    e.target.src = ""; // fallback image if needed
+  };
 
   return (
-    <div className="z-[1] ">
-      <div className="flex items-center justify-center bg-black">
-        <Swiper
-          modules={[Pagination]}
-          pagination={{ clickable: true }}
-          spaceBetween={30}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
+    <section className="py-20  bg-black-100">
+      <div className="container mx-auto">
+        <motion.div
+          className="mb-20 text-center"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
         >
-          {cardData.map((card, i) => (
-            <SwiperSlide key={i}>
-              <CardContainer className="inter-var">
-                <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-[18rem] sm:w-[20rem] h-auto rounded-xl p-6 border mx-auto">
-                  <CardItem
-                    translateZ="50"
-                    className="text-xl font-bold text-neutral-600 dark:text-white"
-                  >
-                    {card.title}
-                  </CardItem>
-                  {/* <CardItem
-                    as="p"
-                    translateZ="60"
-                    className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-                  >
-                    {card.description}
-                  </CardItem> */}
-                  {/* <ul className="list-disc ml-5 mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-                    {card.highlights.map((point, index) => (
-                      <li key={index}>{point}</li>
-                    ))}
-                  </ul> */}
-                  <CardItem translateZ="100" className="w-full mt-4">
+          <motion.h2 className="text-4xl font-bold text-blue-400" variants={fadeInVariants}>
+            <ReactTyped strings={["What We Do?", "Our Services!"]} typeSpeed={50} backSpeed={30} loop />
+          </motion.h2>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 xl:gap-12 2xl:gap-40 max-w-6xl mx-auto mt-6"
+          variants={cardContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {serviceDetails.map((service, index) => (
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              className="p-8 rounded-custom-2xl bg-gradient-to-br from-purple-900/50 to-blue-900/50 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all group relative overflow-hidden h-96 w-64 mx-auto"
+              style={{
+                backgroundImage: `url(${bac})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                borderRadius: "2.5rem",
+              }}
+            >
+              <div className="absolute inset-0 bg-black/50 z-0"></div>
+              <div className="relative z-10 flex flex-col h-full justify-start space-y-6">
+                <div>
+                  <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-all">
                     <img
-                      src={card.img}
-                      className="h-40 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                      alt={`${card.title} Image`}
+                      src={service.iconPath}
+                      alt={service.title}
+                      onError={handleImageError}
+                      className="max-w-full max-h-full"
                     />
-                  </CardItem>
-                  <div className="flex justify-between items-center mt-10">
-                    <CardItem
-                      translateZ={20}
-                      as="a"
-                      href="#"
-                      className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
-                    >
-                      View More →
-                    </CardItem>
-                    <CardItem
-                      translateZ={20}
-                      as="button"
-                      className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
-                    >
-                      Book Now
-                    </CardItem>
                   </div>
-                </CardBody>
-              </CardContainer>
-            </SwiperSlide>
+                  <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                </div>
+                {/* <p className="text-gray-300">{service.description}</p> */}
+                <ul className="text-sm text-gray-200 space-y-1 list-none">
+                  {service.points.map((point, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                   <MdRocket className="text-purple-400" />
+                   {point}
+                  </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
           ))}
-        </Swiper>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
 
-export default Service;
+export default Services;
